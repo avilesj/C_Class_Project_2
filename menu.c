@@ -7,6 +7,15 @@ int printProduct(int index)
 { printf("\n");
   printf("ID: %d\n", stock[index].id);
   printf("Nombre: %s\n", stock[index].name);
+  printf("Unidad de medida: %s\n", stock[index].measureUnit);
+  printf("Categoria: %s\n", stock[index].category);
+  printf("Fecha de registro: %s\n", stock[index].creationDate);
+  printf("Precio de adquisicion: %.2f\n", stock[index].basePrice);
+  printf("Precio de ventas: %.2f\n", stock[index].sellingPrice);
+  printf("Porcentaje superior: %f\n", stock[index].upperPercentage);
+  printf("Porcentaje inferior: %f\n", stock[index].lowerPercentage);
+
+
 }
 void m_searchProduct()
 {

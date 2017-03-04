@@ -74,7 +74,14 @@ int addProduct(int id, float basePrice, float sellingPrice, float upperPercentag
   else
   {
     stock[current].id = id;
-    memcpy(&stock[current].name, &name, sizeof stock[current].name);
+    memcpy(stock[current].name, name, 50);
+    memcpy(stock[current].measureUnit, measureUnit, 50);
+    memcpy(stock[current].category, category, 50);
+    memcpy(stock[current].creationDate, creationDate, 50);
+    stock[current].basePrice = basePrice;
+    stock[current].sellingPrice = sellingPrice;
+    stock[current].upperPercentage = upperPercentage;
+    stock[current].lowerPercentage = lowerPercentage;
     current++;
     return 0;
   }
