@@ -14,6 +14,8 @@ struct product
       float lowerPercentage;
 }stock[MAX];
 
+static const struct product EmptyProduct;
+
 int current = 0;
 
 int addProduct(int id, float basePrice, float sellingPrice, float upperPercentage, float lowerPercentage, char name[MAX], char measureUnit[5], char category[MAX],
