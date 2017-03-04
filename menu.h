@@ -4,6 +4,7 @@
 void menu();
 void m_addProduct();
 void m_searchProduct();
+void m_deleteProduct();
 int printProduct(int id);
 
 #endif

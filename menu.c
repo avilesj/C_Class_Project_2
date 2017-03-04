@@ -5,18 +5,17 @@
 #include <stdlib.h>
 
 int printProduct(int index)
-{ printf("\n");
-  printf("ID: %d\n", stock[index].id);
-  printf("Nombre: %s", stock[index].name);
-  printf("Unidad de medida: %s", stock[index].measureUnit);
-  printf("Categoria: %s", stock[index].category);
-  printf("Fecha de registro: %s", stock[index].creationDate);
-  printf("Precio de adquisicion: %.2f\n", stock[index].basePrice);
-  printf("Precio de ventas: %.2f\n", stock[index].sellingPrice);
-  printf("Porcentaje superior: %f\n", stock[index].upperPercentage);
-  printf("Porcentaje inferior: %f\n", stock[index].lowerPercentage);
-
-
+{
+  printf("\n");
+  printf("\tID: %d\n", stock[index].id);
+  printf("\tNombre: %s", stock[index].name);
+  printf("\tUnidad de medida: %s", stock[index].measureUnit);
+  printf("\tCategoria: %s", stock[index].category);
+  printf("\tFecha de registro: %s", stock[index].creationDate);
+  printf("\t\nPrecio de adquisicion: %.2f\n", stock[index].basePrice);
+  printf("\tPrecio de ventas: %.2f\n", stock[index].sellingPrice);
+  printf("\tPorcentaje superior: %f\n", stock[index].upperPercentage);
+  printf("\tPorcentaje inferior: %f\n\n", stock[index].lowerPercentage);
 }
 
 void m_deleteProduct()
