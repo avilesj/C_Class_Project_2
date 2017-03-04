@@ -2,14 +2,15 @@
 #include <stdio.h>
 #include "invtools.c"
 #include "product.c"
+#include <stdlib.h>
 
 int printProduct(int index)
 { printf("\n");
   printf("ID: %d\n", stock[index].id);
-  printf("Nombre: %s\n", stock[index].name);
-  printf("Unidad de medida: %s\n", stock[index].measureUnit);
-  printf("Categoria: %s\n", stock[index].category);
-  printf("Fecha de registro: %s\n", stock[index].creationDate);
+  printf("Nombre: %s", stock[index].name);
+  printf("Unidad de medida: %s", stock[index].measureUnit);
+  printf("Categoria: %s", stock[index].category);
+  printf("Fecha de registro: %s", stock[index].creationDate);
   printf("Precio de adquisicion: %.2f\n", stock[index].basePrice);
   printf("Precio de ventas: %.2f\n", stock[index].sellingPrice);
   printf("Porcentaje superior: %f\n", stock[index].upperPercentage);
@@ -41,6 +42,8 @@ void m_deleteProduct()
     if(decision == 'y' || decision =='Y')
     {
       stock[search] = EmptyProduct;
+      clearScreen();
+      printf("Producto eliminado exitosamente\n");
     }
     else
     {
@@ -51,10 +54,15 @@ void m_deleteProduct()
   {
     clearScreen();
     printf("Producto no encontrado\n\n");
-    m_deleteProduct();
 
   }
 
+  printf("\n==================================================\n");
+  printf("Presione una tecla para continuar");
+  printf("\n==================================================\n");
+  clear_newlines();
+  getchar();
+  menu();
 
 }
 
@@ -73,16 +81,22 @@ void m_searchProduct()
   int search = searchProduct(product_id); 
   if(search >= 0)
   {
-    printf("\nEXECUTE!");
     printProduct(search);
   }
   else
   {
     clearScreen();
     printf("Producto no encontrado\n\n");
-    m_searchProduct();
 
   }
+
+
+  printf("\n==================================================\n");
+  printf("Presione una tecla para continuar");
+  printf("\n==================================================\n");
+  clear_newlines();
+  getchar();
+  menu();
 
 
 }
@@ -115,9 +129,11 @@ void m_addProduct()
   fgets(category, 50, stdin);
   printf("Fecha de registro(yyyy-mm-dd): ");
   fgets(creationDate, 10, stdin);
+  clear_newlines();
   printf("Precio de adquisicion: ");
   scanf("%f", &basePrice);
   printf("Precio de venta: ");
+  clear_newlines();
   scanf("%f", &sellingPrice);
   printf("Porcentaje superior: ");
   scanf("%f", &upperPercentage);
@@ -151,27 +167,32 @@ void menu()
   int option;
 
   clearScreen();
-  printf("Inventario MEDASOFT\n");
+  printf("==================================================\n");
+  printf("\t\tInventario MEDASOFT\n");
+  printf("==================================================\n");
   printf("1.  Agregar producto\n");
   printf("2.  Buscar producto\n");
   printf("3.  Eliminar producto\n");
   printf("4.  Salir\n");
   scanf("%d", &option);
 
-  switch(option)
+  if(option == 1)
   {
-    case 1:
-      clearScreen();
-      m_addProduct();
-    case 2:
-      clearScreen();
-      m_searchProduct();
-    case 3:
-      clearScreen();
-      m_deleteProduct();
-    case 4:
-      break;
-    default:
-      menu();
+    clearScreen();
+    m_addProduct();
+  }
+  else if(option == 2)
+  {
+    clearScreen();
+    m_searchProduct();
+  }
+  else if(option == 3)
+  {
+    clearScreen();
+    m_deleteProduct();
+  }
+  else if(option == 4)
+  {
+    exit(0);
   }
 }
