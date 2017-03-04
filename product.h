@@ -16,7 +16,8 @@ struct product
 
 int current = 0;
 
-int addProduct(int id, float basePrice, float sellingPrice, float upperPercentage, float lowerPercentage);
+int addProduct(int id, float basePrice, float sellingPrice, float upperPercentage, float lowerPercentage, char name[MAX], char measureUnit[5], char category[MAX],
+    char creationDate[10]);
 int searchProduct(int index);
 int validateUpperPercentage(float percentage);
 int validateLowerPercentage(float percentage);

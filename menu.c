@@ -6,6 +6,7 @@
 int printProduct(int index)
 { printf("\n");
   printf("ID: %d\n", stock[index].id);
+  printf("Nombre: %s\n", stock[index].name);
 }
 void m_searchProduct()
 {
@@ -15,10 +16,11 @@ void m_searchProduct()
   printf("Favor escriba el numero de ID del numero: ");
   scanf("%d", &product_id);
 
-  if(searchProduct(product_id) >= 0)
+  int search = searchProduct(product_id); 
+  if(search >= 0)
   {
     printf("\nEXECUTE!");
-    printProduct(product_id);
+    printProduct(search);
   }
   else
   {
@@ -35,7 +37,11 @@ void m_addProduct()
   clearScreen();
 
   int id;
+  char name[MAX];
   float basePrice;
+  char measureUnit[5];
+  char category[50];
+  char creationDate[10];
   float sellingPrice;
   float upperPercentage;
   float lowerPercentage;
@@ -45,6 +51,14 @@ void m_addProduct()
 
   printf("ID: ");
   scanf("%d", &id);
+  printf("\nNombre: ");
+  scanf("%s", &name);
+  printf("\nUnidad de medida: ");
+  scanf("%s", &measureUnit);
+  printf("\nCategoria: ");
+  scanf("%s", &category);
+  printf("\nFecha de registro(yyyy-mm-dd): ");
+  scanf("%s", &creationDate);
   printf("\nPrecio de adquisicion: ");
   scanf("%f", &basePrice);
   printf("\nPrecio de venta: ");
@@ -54,13 +68,14 @@ void m_addProduct()
   printf("\nPorcentaje inferior: ");
   scanf("%f", &lowerPercentage);
 
-  if(addProduct(id,basePrice, sellingPrice, upperPercentage, lowerPercentage) < 0)
+
+  if(addProduct(id,basePrice, sellingPrice, upperPercentage, lowerPercentage, name, measureUnit, category, creationDate) < 0)
   {
     printf("Hubo un error agregando el producto");
   }
   else
   {
-        printf("Producto agregado exitosamente!");
+    printf("Producto agregado exitosamente!");
   }
   menu();
 }
@@ -72,11 +87,13 @@ void menu()
   printf("Inventario MEDASOFT\n");
   printf("1.  Agregar producto\n");
   printf("2.  Buscar producto\n");
+  printf("3.  Eliminar producto\n");
   scanf("%d", &option);
 
   switch(option)
   {
     case 1:
+      clearScreen();
       m_addProduct();
     case 2:
       clearScreen();
